@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="__INDEX__/css/weui.css">
+    <link rel="stylesheet" href="__INDEX__/css/jquery-weui.css">
+    <link rel="stylesheet" href="__INDEX__/css/iconfont.css">
+    <link rel="stylesheet" href="__INDEX__/css/border.css">
+    <link rel="stylesheet" href="__INDEX__/css/reset.css">
+</head>
+<style>
+    * { touch-action: pan-y; } 
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+        background-color: rgb(233, 233, 240);
+        -webkit-tap-highlight-color: transparent;
+        color: #353535;
+    }
+    .weui-cell__bd {
+        font-size: 15px;
+    }
+    .weui-cell__ft {
+        font-size: 13px;
+    }
+    #home-city,#bron_time,#classroom{
+        text-align: right;
+    }
+</style>
+
+<body>
+    <div class="weui-cells">
+        <div class="weui-cell sex">
+            <div class="weui-cell__bd">
+                <p>姓别</p>
+            </div>
+            <div class="weui-cell__ft">男</div>
+        </div>
+        <div class="weui-cell native_place">
+            <div class="weui-cell__bd">
+                <p>籍贯</p>
+            </div>
+            <div class="weui-cell__ft">
+                <input class="weui-input" id="home-city" type="text" value="北京 北京市">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>出生年月</p>
+            </div>
+            <div class="weui-cell__ft">
+                <input type="text" class="weui-input" id='bron_time'>
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>所在班级</p>
+            </div>
+            <div class="weui-cell__ft">
+                <input type="text" class="weui-input" id='classroom' value="土木2班">
+            </div>
+        </div>
+</body>
+<script src="__INDEX__/js/jquery.min.js"></script>
+<script src="__INDEX__/js/fastclick.js"></script>
+<script src="__INDEX__/js/city-picker.min.js"></script>
+<script src="__INDEX__/js/jquery-weui.min.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+        var touch = function () {
+            $('.weui-cell').on('touchstart', function () {
+                $(this).css("background-color", "#ddd");
+            })
+            $('.weui-cell').on('touchmove', function () {
+                $(this).css("background-color", "#ddd");
+            })
+            $('.weui-cell').on('touchend', function () {
+                $(this).css("background-color", "#fff");
+            })
+        }
+        touch();
+        $('.sex').on('click', function () {
+            $.confirm({
+                title: '性别',
+                text: '<div class="weui-cells weui-cells_checkbox">'
+                + '<label class="weui-cell weui-check__label" for="x11">'
+                + '<div class="weui-cell__bd">'
+                + '<p style="text-align:left">男</p>'
+                +'</div>'
+                + '<div class="weui-cell__ft">'
+                + '<input type="radio" class="weui-check" name="radio1" id="x11">'
+                + '<span class="weui-icon-checked"></span>'
+                +'</div></label>'
+                + '<label class="weui-cell weui-check__label" for="x12">'
+                + '<div class="weui-cell__bd">'
+                + '<p style="text-align:left">女</p></div>'
+                + '<div class="weui-cell__ft">'
+                + ' <input type="radio" name="radio1" class="weui-check" id="x12" checked="checked">'
+                + '<span class="weui-icon-checked"></span></div></label>'
+                + '</div>',
+                onOK: function () {
+                    //点击确认
+                },
+                onCancel: function () {
+                }
+            });
+        })
+
+        $("#home-city").cityPicker({
+            showDistrict: false
+        });
+         $("#bron_time").datetimePicker({
+            times: function () { },
+            onChange: function (picker, values, displayValues) {
+            },
+        });
+        $("#classroom").picker({
+            title: "请选择您的手机",
+            cols: [
+                {
+                    textAlign: 'center',
+                    values: ['土木1班', '土木2班', '土木3班', '土木4班', '土木5班', '土木6班' ]
+                }
+            ]
+        });
+    });
+</script>
+
+</html>

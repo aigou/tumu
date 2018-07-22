@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="__INDEX__/css/weui.css">
+    <link rel="stylesheet" href="__INDEX__/css/jquery-weui.css">
+    <link rel="stylesheet" href="__INDEX__/css/iconfont.css">
+    <link rel="stylesheet" href="__INDEX__/css/border.css">
+    <link rel="stylesheet" href="__INDEX__/css/reset.css">
+</head>
+<style>
+    html,body{
+        height: 100%;
+        width: 100%;
+        background-color: rgb(233, 233, 240);
+        -webkit-tap-highlight-color: transparent;
+        color:#353535;
+    }
+    .weui-cell__bd{
+        font-size: 15px;
+    }
+    .weui-cell__ft{
+        font-size: 13px;
+    }
+    .weui-cell__ft img{
+        width: 50px;
+        height: 50px;
+        padding: 7px 0;
+    }
+    .info_first{
+        padding: 0 15px;
+    }
+</style>
+<body>
+    <div class="weui-cells">
+        <div class="weui-cell info_first">
+            <div class="weui-cell__bd">
+                <p>头像</p>
+            </div>
+            <div class="weui-cell__ft">
+                <img src="__INDEX__/images/10.png">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>姓名</p>
+            </div>
+            <div class="weui-cell__ft">张三</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>学号</p>
+            </div>
+            <div class="weui-cell__ft">1605010101</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>任职情况</p>
+            </div>
+            <div class="weui-cell__ft">副部长</div>
+        </div>
+        <div class="weui-cell QQ">
+            <div class="weui-cell__bd">
+                <p>QQ</p>
+            </div>
+            <div class="weui-cell__ft">1212121212</div>
+        </div>
+        <div class="weui-cell phone">
+            <div class="weui-cell__bd">
+                <p>手机号</p>
+            </div>
+            <div class="weui-cell__ft">12345678912</div>
+        </div>
+    </div>
+    <div class="weui-cells">
+        <div class="weui-cell more">
+            <div class="weui-cell__bd">
+                <p>更多</p>
+            </div>
+     </div>
+     </div>
+</body>
+<script src="__INDEX__/js/jquery.min.js"></script>
+<script src="__INDEX__/js/fastclick.js"></script>
+<script src="__INDEX__/js/jquery-weui.min.js"></script>
+<script>
+    $(function () {
+            FastClick.attach(document.body);
+            var touch = function () {
+                $('.weui-cell').on('touchstart', function () {
+                    $(this).css("background-color", "#ddd");
+                })
+                $('.weui-cell').on('touchmove', function () {
+                    $(this).css("background-color", "#ddd");
+                })
+                $('.weui-cell').on('touchend', function () {
+                    $(this).css("background-color", "#fff");
+                })
+            }
+            touch();
+            $('.more').on('click',function () {
+                window.location.href = "{:url('more_info')}";
+            })
+            $('.QQ').on('click',function () {
+                $.confirm({
+                    title: '新的QQ',
+                    text: '<input class="weui-input" type="number" placeholder="请在这里输入">',
+                    onOK: function () {
+                        //点击确认
+                    },
+                    onCancel: function () {
+                    }
+                });
+            })
+            $('.phone').on('click', function () {
+            $.confirm({
+                title: '手机号码',
+                text: '<input class="weui-input" type="tel" maxlength="11" placeholder="请在这里输入">',
+                onOK: function () {
+                    //点击确认
+                },
+                onCancel: function () {
+                }
+            });
+        })
+        });
+</script>
+</html>
