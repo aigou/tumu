@@ -19,6 +19,31 @@
         -webkit-tap-highlight-color: transparent;
         color:#353535;
     }
+    .head{
+        height: 35px;
+        line-height: 35px;
+        box-shadow: 0 1px 1px 1px #e4e4e4;
+        background:#fff;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+    }
+    .head span {
+        font-size: 20px;
+        padding-left: 5px;
+    }
+    .info{
+        margin-top:35px; 
+    }
+    .info_first{
+        padding: 0 15px;
+    }
+    .info_first .weui-cell__ft{
+        width: 50px;
+        height: 70px;
+    }
     .weui-cell__bd{
         font-size: 15px;
     }
@@ -26,16 +51,16 @@
         font-size: 13px;
     }
     .weui-cell__ft img{
+        padding-top:10px; 
         width: 50px;
         height: 50px;
-        padding: 7px 0;
-    }
-    .info_first{
-        padding: 0 15px;
     }
 </style>
 <body>
-    <div class="weui-cells">
+    <div class="head">
+        <span class="iconfont icon-fanhui"></span>
+    </div>
+    <div class="weui-cells info">    
         <div class="weui-cell info_first">
             <div class="weui-cell__bd">
                 <p>头像</p>
@@ -116,16 +141,20 @@
                 });
             })
             $('.phone').on('click', function () {
-            $.confirm({
-                title: '手机号码',
-                text: '<input class="weui-input" type="tel" maxlength="11" placeholder="请在这里输入">',
-                onOK: function () {
-                    //点击确认
-                },
-                onCancel: function () {
-                }
-            });
-        })
+                $.confirm({
+                    title: '手机号码',
+                    text: '<input class="weui-input" type="tel" maxlength="11" placeholder="请在这里输入">',
+                    onOK: function () {
+                        //点击确认
+                    },
+                    onCancel: function () {
+                    }
+                });
+            })
+            $('.icon-fanhui').on('click',function () {
+                window.location.href="{:url('index/index#tab3')}";
+
+            })
         });
 </script>
 </html>
